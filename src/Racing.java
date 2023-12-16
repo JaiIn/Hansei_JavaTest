@@ -5,7 +5,11 @@ import javax.swing.*;
 
 public class Racing extends Frame {
 	
-	private int Track = 100;
+	
+	int EndTrack = 100;
+	
+	Label[] RList = null;
+	Label[] TList = null;
 	
 	int RacerNum = 2;
 	
@@ -19,23 +23,11 @@ public class Racing extends Frame {
 		super(title);
 		setLayout(null);
 		setBounds(screenSize.width / 2 - 200, screenSize.height / 2 - 200, 400, 400);
-		
-		// 버튼 1개
-		/*
-		 	첫 창
-		 	1. 레이블로 위에 Racing! 띄우기
-		 	2. 시작 버튼 띄우기
-		 	3. Racer 생성 버튼
-		 	다음 창
-		 	4. 끝날때 까지 대기
-		 	5. 끝나면 우승자 말해주기
-		 	6. 닫기 버튼 활성화
-		*/
+
 		Label MainLabel = new Label("Input How many Racer", Label.CENTER);
 		MainLabel.setBackground(Color.LIGHT_GRAY);
 		MainLabel.setBounds(100, 100, 200, 50);
 		
-		// Racer 생성 택스트 필드
 		TextField InputNum = new TextField(5);
 		InputNum.setBounds(150,210,50,30);
 		
@@ -83,32 +75,63 @@ public class Racing extends Frame {
 		Frame Rf = new Frame("Racing");
 		Rf.setLayout(null);
 		Rf.setBounds(screenSize.width / 2 - 200, screenSize.height / 2 - 200, 400, 400);
-		Ready(mem);
 		
-		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) { dispose(); }	
+		Ready(Rf,mem);
+		
+		Rf.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) { Rf.setVisible(false); }	
 			});
 		
-		setVisible(true);
+		Rf.setVisible(true);
 	}
-	public void Ready(int mem)
+	public void Ready(Frame f,int mem)
 	{
 		String name ="";
-		Label[] RList =  new Label[mem];;
-		int height = screenSize.height / (mem + 4);
+		RList =  new Label[mem];
+		TList =  new Label[mem];
+		int height = screenSize.height / (mem + 3);
 		for(int i =0;i<mem;++i)
 		{
+			int Where = Racers[i].StartTrack;
+			String sWhere = String.valueOf(Where);
 			name = Racers[i].name;
+			
 			RList[i] = new Label(name,Label.CENTER);
-			RList[i].setBounds(50, height,200, 50);
+			RList[i].setBounds(130, height, 30, 30);
+			
+			TList[i] = new Label(sWhere,Label.CENTER);
+			TList[i].setBounds(230, height, 30, 30);
+			
 			height += 50;
-			add(RList[i]);
+			
+			f.add(RList[i]);
+			f.add(TList[i]);
 		}
+		
 	}
 	public class Racer extends Thread
 	{
-		private double Speed = 5.0;
+		private int StartTrack = 0;
+		private Random Cm = new Random();
+		private int Speed = 5;
 		private String name = "1";
+		
 		Racer(String name){this.name = name;}
+		
+		public void Running()
+		{
+			int iCm = Cm.nextInt(2);
+			int rCm = (iCm == 0) ? 1 : -1;
+			int ASpeed = (int)(Math.random() * 3 + 1);
+			if(this.Speed > 0 && this.Speed < 10)
+			{
+				this.Speed += (rCm) * (ASpeed);
+				if(this.Speed > 10)
+				{this.Speed = 10;}
+				else if(this.Speed <= 0)
+				{this.Speed = 1;}
+			}
+			this.StartTrack += this.Speed;
+		}
 	}
 }
