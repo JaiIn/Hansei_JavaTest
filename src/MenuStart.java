@@ -5,7 +5,7 @@ import javax.swing.*;
 public class MenuStart extends Frame {
 
 	Toolkit tk = Toolkit.getDefaultToolkit();
-	Dimension screenSize = tk.getScreenSize(); // 화면에 너비, 높이 정보를 screenSize에 대입!
+	Dimension screenSize = tk.getScreenSize();
 
 	MenuStart(String title) {
 		super(title);
@@ -102,13 +102,11 @@ public class MenuStart extends Frame {
 		mHelp.add(miHelp);
 		mHelp.add(miInfo);
 
-		// 메뉴바에 메뉴 붙이기
 		mb.add(mFile);
 		mb.add(mEvent1);
 		mb.add(mEvent2);
 		mb.add(mHelp);
 
-		// 프레임 닫기 이벤트
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
@@ -119,12 +117,12 @@ public class MenuStart extends Frame {
 		setVisible(true);
 	}
 
-	public void paint(Graphics g) { // 오버라이딩해서 사용!
+	public void paint(Graphics g) {
 		Image img = tk.getImage("images/back.jpg");
 		g.drawImage(img, 0, 30, this);
 	}
 
 	public static void main(String[] args) {
-		new MenuStart("Java Project_201910571_최동인"); // 본인 학번과 이름 사용!
+		new MenuStart("Java Project_201910571_최동인");
 	}
 }

@@ -25,7 +25,6 @@ public class BgColor extends Frame {
 		
 		add(cb1); add(cb2); add(cb3); add(cb4); 
 
-		// 프레임 닫기 이벤트 처리!
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				dispose();
@@ -40,7 +39,7 @@ public class BgColor extends Frame {
 			Checkbox cb = (Checkbox)e.getSource();
 			String color = cb.getLabel();
 			
-			int r, g, b; // 0~255 사이 정수
+			int r, g, b;
 			
 			if(color.equals("red")) {
 				setBackground(Color.red);
@@ -61,7 +60,7 @@ public class BgColor extends Frame {
 				cb3.setBackground(Color.blue);
 				cb4.setBackground(Color.blue);
 			} else if(color.equals("random")) {
-				r = (int)(Math.random() * 256); // 0.0 <= r < 256.0 -> 0~255
+				r = (int)(Math.random() * 256);
 				g = (int)(Math.random() * 256);
 				b = (int)(Math.random() * 256);
 				

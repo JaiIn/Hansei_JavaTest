@@ -15,7 +15,7 @@ public class Racing extends Frame {
 	int RacerNum = 2;
 	
 	Racer[] Racers;
-	
+	 
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	Dimension screenSize = tk.getScreenSize();
 	

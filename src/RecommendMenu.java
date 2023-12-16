@@ -5,7 +5,7 @@ import java.util.*;
 public class RecommendMenu extends Frame{
 
 	Toolkit tk = Toolkit.getDefaultToolkit();
-	Dimension screenSize = tk.getScreenSize(); // 화면에 너비, 높이 정보를 screenSize에 대입!
+	Dimension screenSize = tk.getScreenSize();
 	
 	String[] FoodList = {"햄버거","국밥","쌀국수","편의점","분식","마라탕","자장면",
 			"뼈다귀","김치찌개","매밀면","돈가스"};

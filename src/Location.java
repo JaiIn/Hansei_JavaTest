@@ -13,14 +13,14 @@ public class Location extends Frame {
 		l1.setBounds(7, 30, 200, 20);
 		l1.setBackground(Color.yellow);
 		
-		addMouseMotionListener(new MouseMotionListener() { // 2. 이벤트 리스너(감지기)
+		addMouseMotionListener(new MouseMotionListener() { 
 			public void mouseDragged(MouseEvent e) {}
 			public void mouseMoved(MouseEvent e) {
 				l1.setText("Mouse Location: (" + e.getX() + ", " + e.getY() + ")");	
 			}
 		});
 		
-		addWindowListener(new WindowAdapter() { // 프레임 닫기 이벤트 처리
+		addWindowListener(new WindowAdapter() { 
 			public void windowClosing(WindowEvent e) {
 				dispose();
 			}

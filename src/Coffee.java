@@ -8,9 +8,8 @@ public class Coffee extends Frame {
 
 		Font f1 = new Font("Serif", Font.BOLD, 20);
 
-		// 프레임 위치 설정 (중앙에 위치 시키기)
 		Toolkit tk = Toolkit.getDefaultToolkit();
-		Dimension screenSize = tk.getScreenSize(); // 화면의 너비, 높이 정보를 screenSize에 대입!
+		Dimension screenSize = tk.getScreenSize();
 		setBounds(screenSize.width / 2 - 200, screenSize.height / 2 - 200, 400, 400);
 
 		setBackground(new Color(210, 250, 234));
@@ -33,7 +32,6 @@ public class Coffee extends Frame {
 		l1.setBounds(25, 285, 350, 50);
 		l1.setFont(f1);
 
-		// 버튼 3개 이벤트 처리
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				l1.setText("You Choose " + b1.getLabel());
@@ -52,19 +50,16 @@ public class Coffee extends Frame {
 			}
 		});
 
-		// Panel에 버튼 3개 붙이기
 		p1.add(b1);
 		p1.add(b2);
 		p1.add(b3);
 
-		// 프레임에 붙이기
 		add(p1);
 		add(l1);
 
-		// 프레임 닫기 이벤트 처리
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				dispose(); // 메모리에서 해제
+				dispose();
 			}
 		});
 
