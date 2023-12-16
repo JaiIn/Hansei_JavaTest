@@ -17,11 +17,11 @@ public class RecommendMenu extends Frame{
 		super(title);
 		setLayout(null);
 		
-		setBounds(screenSize.width / 2 - 200, screenSize.height / 2 - 200, 400, 400);
+		setBounds(screenSize.width / 2 - 200, screenSize.height / 2 - 200, 400, 500);
 		
 		Label l1 = new Label("RecommendMenu", Label.CENTER);
-		l1.setBackground(Color.white);
-		l1.setBounds(25, 285, 350, 50);
+		l1.setBackground(Color.yellow);
+		l1.setBounds(25, 285, 350, 150);
 		
 		Button b1 = new Button("Start!");
 		
