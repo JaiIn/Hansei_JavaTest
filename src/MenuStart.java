@@ -64,7 +64,8 @@ public class MenuStart extends Frame {
 		mEvent1.add(miLocation);
 		mEvent1.add(miBgColor);
 
-		Menu mEvent2 = new Menu("AddEvent");
+		// 내가 만든 이벤트를 붙일 공간
+		Menu mEvent2 = new Menu("Choi Event");
 		
 		MenuItem miRM = new MenuItem("Random Menu");
 		miRM.addActionListener(new ActionListener() {
@@ -72,12 +73,16 @@ public class MenuStart extends Frame {
 				new RecommendMenu("Random Menu");
 			}
 		});
-
 		
-		MenuItem miEvent2 = new MenuItem("Event 2");
+		MenuItem miRc = new MenuItem("Racing");
+		miRc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Racing("Racing");
+			}
+		});
 
 		mEvent2.add(miRM);
-		mEvent2.add(miEvent2);
+		mEvent2.add(miRc);
 
 		Menu mHelp = new Menu("Help");
 		MenuItem miHelp = new MenuItem("Program Info");
