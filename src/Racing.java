@@ -5,8 +5,6 @@ import javax.swing.*;
 
 public class Racing extends Frame {
 	
-	JProgressBar pb;
-	
 	private int Track = 100;
 	
 	int RacerNum = 2;
@@ -67,7 +65,7 @@ public class Racing extends Frame {
 		
 		SB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Starting();
+				Starting(RacerNum);
 			}
 		});
 		
@@ -80,18 +78,37 @@ public class Racing extends Frame {
 		add(MainLabel);
 		setVisible(true);
 	}
-	public void Starting()
+	public void Starting(int mem)
 	{
-		pb.set
+		Frame Rf = new Frame("Racing");
+		Rf.setLayout(null);
+		Rf.setBounds(screenSize.width / 2 - 200, screenSize.height / 2 - 200, 400, 400);
+		Ready(mem);
+		
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) { dispose(); }	
+			});
+		
+		setVisible(true);
 	}
-	public class Racer extends Panel
+	public void Ready(int mem)
+	{
+		String name ="";
+		Label[] RList =  new Label[mem];;
+		int height = screenSize.height / (mem + 4);
+		for(int i =0;i<mem;++i)
+		{
+			name = Racers[i].name;
+			RList[i] = new Label(name,Label.CENTER);
+			RList[i].setBounds(50, height,200, 50);
+			height += 50;
+			add(RList[i]);
+		}
+	}
+	public class Racer extends Thread
 	{
 		private double Speed = 5.0;
 		private String name = "1";
-		
 		Racer(String name){this.name = name;}
-		
-
 	}
-
 }
