@@ -1,12 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.*;
 
 public class Racing extends Frame {
 	
+	JProgressBar pb;
+	
 	private int Track = 100;
 	
-	Scanner sc = new Scanner(System.in);
 	int RacerNum = 2;
 	
 	Racer[] Racers;
@@ -65,7 +67,7 @@ public class Racing extends Frame {
 		
 		SB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BeforeStart();
+				Starting();
 			}
 		});
 		
@@ -78,15 +80,18 @@ public class Racing extends Frame {
 		add(MainLabel);
 		setVisible(true);
 	}
-	public void BeforeStart()
+	public void Starting()
 	{
-		
+		pb.set
 	}
-	public class Racer 
+	public class Racer extends Panel
 	{
 		private double Speed = 5.0;
 		private String name = "1";
 		
 		Racer(String name){this.name = name;}
+		
+
 	}
+
 }
