@@ -7,6 +7,7 @@ public class Racing extends Frame {
 	
 	
 	int EndTrack = 100;
+	int Rank = 1;
 	
 	Label[] RList = null;
 	Label[] TList = null;
@@ -83,6 +84,9 @@ public class Racing extends Frame {
 			});
 		
 		Rf.setVisible(true);
+		
+		for (int i = 0; i < mem; ++i) 
+		{new Thread(Racers[i]).start();}
 	}
 	public void Ready(Frame f,int mem)
 	{
@@ -109,7 +113,7 @@ public class Racing extends Frame {
 		}
 		
 	}
-	public class Racer extends Thread
+	public class Racer implements Runnable
 	{
 		private int StartTrack = 0;
 		private Random Cm = new Random();
@@ -117,6 +121,18 @@ public class Racing extends Frame {
 		private String name = "1";
 		
 		Racer(String name){this.name = name;}
+		
+		public void run() {
+            while (StartTrack < EndTrack) {
+                Running();
+                updateUI();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 		
 		public void Running()
 		{
@@ -133,5 +149,23 @@ public class Racing extends Frame {
 			}
 			this.StartTrack += this.Speed;
 		}
+        public void updateUI() 
+        {
+            EventQueue.invokeLater(() -> 
+            {
+                for (int i = 0; i < RList.length; ++i) 
+                {
+                    if (Racers[i] == this) 
+                    {
+                    	if(StartTrack >= EndTrack)
+                    	{
+                    		TList[i].setText(String.valueOf(Rank));
+                    		++Rank;
+                    		break;
+                    	}
+                    }
+                }
+            });
+        }
 	}
 }
