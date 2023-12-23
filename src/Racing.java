@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Racing extends Frame {
 	
 	
-	int EndTrack = 100;
+	int EndTrack = 300;
 	int Rank = 1;
 	
 	Label[] RList = null;
